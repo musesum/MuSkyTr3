@@ -1,6 +1,5 @@
 sky { // visual music program
     main { // main controls
-        frame (0)       // frame counter
         fps (1…60 = 60) // frames per second
         run (1)         // currently running
     }
