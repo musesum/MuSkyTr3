@@ -49,13 +49,13 @@ menu.model {
                     y -1…1 = 0) >> shader.model.pipe.render.repeat
 
             shift (x 0…1 = 0.5,
-                   y 0…1 = 0.5) >> shader.model.pipe.draw
+                   y 0…1 = 0.5) <> shader.model.pipe.draw
 
             tilt  (tog 0…1 = 0) <> sky.input.tilt
         }
         color {
             fade  (val 0…1 = 0) <> sky.color.xfade
-            plane (val 0…1 = 0) >> shader.model.pipe.color
+            plane (val 0…1 = 0) <> shader.model.pipe.color
             zero  (tap 0…1 = 0) >> sky.draw.screen.fill(0)
             one   (tap 0…1 = 0) >> sky.draw.screen.fill(1)
         }

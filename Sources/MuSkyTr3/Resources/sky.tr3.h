@@ -12,12 +12,12 @@ sky { // visual music program
     color { // false color mapping palette
         pal0 ("roygbik")    // palette 0: (r)ed (o)range (y)ellow …
         pal1 ("wKZ")        // palette 1: (w)hite blac(K) fractali(Z)e
-        xfade (0…1 = 0.5)
+        xfade (val 0…1 = 0.5)
     }
     input { // phone and tablet pencil input
 
         azimuth (x -0.2 … 0.2,
-                 y -0.2 … 0.2)  // pen tilt
+                 y -0.2 … 0.2)  >> shader.model.pipe.draw
 
         accel (x -0.3 … 0.3,
                y -0.3 … 0.3,

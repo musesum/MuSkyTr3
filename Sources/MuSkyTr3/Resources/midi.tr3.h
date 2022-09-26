@@ -9,7 +9,16 @@ midi { // musical instrument device interface
         pitchBend  (val 0…16384=8192, chan 1…32, port 1…16, time 0)
         programChange (num 0…255, chan 1…32, port 1…16, time 0) //1, 632, 255
     }
+
     output @ input
+
+    cc_sky {
+        plane(num == 11, val 0…127, chan, time) >> menu.model.canvas.color.plane
+        xfade(num == 10, val 0…127, chan, time) >> sky.color.xfade
+    }
+
+    input.controller >> cc_sky˚.
+
     cc {
         main {
             modWheel    (num == 1, val, chan, time)
@@ -112,3 +121,5 @@ midi { // musical instrument device interface
         }
     }
 }
+
+
