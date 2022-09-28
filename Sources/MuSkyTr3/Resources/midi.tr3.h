@@ -4,7 +4,7 @@ midi { // musical instrument device interface
             on  (num 0…127, velo 0…127, chan 1…32, port 1…16, time 0)
             off (num 0…127, velo 0…127, chan 1…32, port 1…16, time 0)
         }
-        controller (num 0…127, val 0…127, chan 1…32, port 1…16, time 0)
+        controller (cc 0…127, val 0…127, chan 1…32, port 1…16, time 0)
         afterTouch (num 0…127, val 0…127, chan 1…32, port 1…16, time 0)
         pitchBend  (val 0…16384=8192, chan 1…32, port 1…16, time 0)
         programChange (num 0…255, chan 1…32, port 1…16, time 0) //1, 632, 255
@@ -12,14 +12,43 @@ midi { // musical instrument device interface
 
     output @ input
 
-    cc_sky {
-        plane(num == 11, val 0…127, chan, time) >> menu.model.canvas.color.plane
-        xfade(num == 10, val 0…127, chan, time) >> sky.color.xfade
-    }
-
-    input.controller >> cc_sky˚.
-
     cc {
+        skypad {
+            plane(cc == 11, val 0…127, chan, time)
+            <> menu.model.canvas.color.plane
+            xfade(cc == 10, val 0…127, chan, time)
+            <> sky.color.xfade
+        }
+        roli {
+            lightpad {
+                z (cc == 115, val 0…127, chan, time)
+                x (cc == 114, val 0…127, chan, time)
+                y (cc == 113, val 0…127, chan, time)
+            }
+            loopblock {
+                mode    (cc == 102, val 0…127, chan, time)
+                mute    (cc == 103, val 0…127, chan, time)
+                metro   (cc == 104, val 0…127, chan, time)
+                skip    (cc == 105, val 0…127, chan, time)
+                back    (cc == 106, val 0…127, chan, time)
+                play    (cc == 107, val 0…127, chan, time)
+                record  (cc == 108, val 0…127, chan, time)
+                learn   (cc == 109, val 0…127, chan, time)
+                prev    (cc == 110, val 0…127, chan, time)
+                next    (cc == 111, val 0…127, chan, time)
+            }
+        }
+    }
+    input.controller >> cc˚.
+    output.controller << cc˚.
+
+    notes {
+        x(x 0…127: num, y 0…127: num) >> sky.draw.line˚.
+        z(z 0…63: velo) >> sky.draw.brush.size
+    }
+    input.note.on >> notes˚.
+
+    _cc {
         main {
             modWheel    (num == 1, val, chan, time)
             volume      (num == 7, val, chan, time)
