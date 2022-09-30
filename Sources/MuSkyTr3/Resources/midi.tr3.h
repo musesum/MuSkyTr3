@@ -21,9 +21,9 @@ midi { // musical instrument device interface
         }
         roli {
             lightpad {
-                z (cc == 115, val 0…127, chan, time)
                 x (cc == 114, val 0…127, chan, time)
                 y (cc == 113, val 0…127, chan, time)
+                z (cc == 115, val 0…127, chan, time)
             }
             loopblock {
                 mode    (cc == 102, val 0…127, chan, time)
@@ -43,8 +43,9 @@ midi { // musical instrument device interface
     output.controller << cc˚.
 
     notes {
-        x(x 0…127: num, y 0…127: num) >> sky.draw.line˚.
-        z(z 0…63: velo) >> sky.draw.brush.size
+        dot(x: num % 12,
+            y: num _/ 12,
+            z: velo) >> sky.draw.dot
     }
     input.note.on >> notes˚.
 

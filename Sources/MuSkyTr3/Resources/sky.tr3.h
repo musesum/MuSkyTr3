@@ -34,7 +34,6 @@ sky { // visual music program
             fill(0) // all zeros 0x00000000
         }
         brush { // type of brush and range
-            type ("dot")        // draw a circle
             size (1 … 64 = 10)    // range of radius
             press (0 … 1 = 1)     // pressure changes size
             index (1 … 255 = 127) // index in 256 color palette
@@ -43,6 +42,9 @@ sky { // visual music program
         line { // place holder for line drawing
             prev (x 0 … 1, y 0 … 1) // staring point of segment
             next (x 0 … 1, y 0 … 1) // endint point of segment
+        }
+        dot (x, y, z)
+
         }
     }
 }
