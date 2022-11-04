@@ -14,8 +14,11 @@ midi { // musical instrument device interface
     output @ input
 
     skypad {
-        plane(num == 129, val 0…1, chan, time) <> menu.model.canvas.color.plane
-        xfade(num == 130, val 0…1, chan, time) <> sky.color.xfade
+        plane(num == 129, val 0…1, chan, time)
+        <> menu.model.canvas.color.plane
+
+        xfade(num == 130, val 0…1, chan, time)
+        <> sky.color.xfade
     }
     input.nrpn >> skypad˚.
 
@@ -23,6 +26,7 @@ midi { // musical instrument device interface
         skypad {
             plane(cc == 11, val 0…127, chan, time)
             <> menu.model.canvas.color.plane
+            
             xfade(cc == 10, val 0…127, chan, time)
             <> sky.color.xfade
         }
@@ -54,7 +58,8 @@ midi { // musical instrument device interface
             y: num _/ 12,
             z: velo) >> sky.draw.dot
     }
-    input.note.on >> notes˚.
+    input.note.on >> (notes˚., output.note.on)
+    input.note.off >> (input.note.on, output.note.off)
 
     _cc {
         main {
