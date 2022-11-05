@@ -43,7 +43,7 @@ menu.model {
     canvas {
         tile  {
             mirror (x 0…1 = 0,
-                    y 0…1 = 0) >> shader.model.pipe.render.mirror
+                    y 0…1 = 0) >> shader.model.pipe.render.mirror 
 
             repeat (x -1…1 = 0,
                     y -1…1 = 0) >> shader.model.pipe.render.repeat

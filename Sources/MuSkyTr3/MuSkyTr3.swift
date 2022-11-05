@@ -7,7 +7,8 @@ public struct MuSkyTr3 {
     public static func read(_ filename: String,
                             _ ext: String) -> String? {
 
-        guard let path = Bundle.module.path(forResource: filename, ofType: ext)  else {
+        guard let path = Bundle.module.path(forResource: filename,
+                                            ofType: ext)  else {
             print("🚫 MuSkyTr3 couldn't find file: \(filename)")
             return nil
         }

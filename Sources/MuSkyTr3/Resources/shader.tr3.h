@@ -16,7 +16,8 @@ shader.model {
         color  (0…1 = 0.1) // bitplane
         render {
             frame (x 0, y 0, w 1080, h 1920)
-            repeat (x, y)
+            mirror (x 0…1 = 0.5,
+                    y 0…1 = 0.5)
             mirror (x, y)
         }
     }
