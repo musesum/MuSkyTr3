@@ -1,6 +1,6 @@
-sky { // visual music program
+sky { // visual music synth
     main { // main controls
-        fps (1…60 = 60) // frames per second
+        fps (1…60=60) // frames per second
         run (1)         // currently running
     }
     pipeline { // default metal pipeline at atartup
@@ -12,21 +12,21 @@ sky { // visual music program
     color { // false color mapping palette
         pal0 ("roygbik")    // palette 0: (r)ed (o)range (y)ellow …
         pal1 ("wKZ")        // palette 1: (w)hite blac(K) fractali(Z)e
-        xfade (val 0…1 = 0.5)
+        xfade (val 0…1=0.5)
     }
     input { // phone and tablet pencil input
 
-        azimuth (x -0.2 … 0.2,
-                 y -0.2 … 0.2)  >> shader.model.pipe.draw
+        azimuth (x -0.2…0.2,
+                 y -0.2…0.2)  >> shader.model.pipe.draw
 
-        accel (x -0.3 … 0.3,
-               y -0.3 … 0.3,
-               z -0.3 … 0.3)  // accelerometer
-        accel.on (0 … 1)
+        accel (x -0.3…0.3,
+               y -0.3…0.3,
+               z -0.3…0.3)  // accelerometer
+        accel.on (0…1)
 
-        radius (1 … 92 = 9) // finger silhouette
-        tilt (0 … 1)        // use tilt
-        force (0 … 0.5)     // pen pressure
+        radius (1…92=9) // finger silhouette
+        tilt (0…1)        // use tilt
+        force (0…0.5)     // pen pressure
         >> sky.draw.brush.size
     }
     draw { // draw on metal layer
@@ -34,17 +34,15 @@ sky { // visual music program
             fill(0) // all zeros 0x00000000
         }
         brush { // type of brush and range
-            size (1 … 64 = 10)    // range of radius
-            press (0 … 1 = 1)     // pressure changes size
-            index (1 … 255 = 127) // index in 256 color palette
-                                // <<(osc.tuio.z osc.manos˚z) // redirect from OSC
+            size (1…64=10)    // range of radius
+            press (0…1=1)     // pressure changes size
+            index (1…255=127) // index in 256 color palette
+                                  // <<(osc.tuio.z osc.manos˚z) // redirect from OSC
         }
         line { // place holder for line drawing
-            prev (x 0 … 1, y 0 … 1) // staring point of segment
-            next (x 0 … 1, y 0 … 1) // endint point of segment
+            prev (x 0…1, y 0…1) // staring point of segment
+            next (x 0…1, y 0…1) // endint point of segment
         }
         dot (x, y, z)
-
-        }
     }
 }
