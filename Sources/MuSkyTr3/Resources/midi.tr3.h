@@ -1,13 +1,13 @@
 midi { // musical instrument device interface 
     input { // midi input
         note { // note on/off from 0 thru 127
-            on  (num 0…127, velo 0…127, chan 1…32, port 1…16, time 0)
-            off (num 0…127, velo 0…127, chan 1…32, port 1…16, time 0)
+            on  (num 0…127, velo 0…127, chan 1…32, port 1…16, time)
+            off (num 0…127, velo 0…127, chan 1…32, port 1…16, time)
         }
-        controller (cc 0…127, val 0…127, chan 1…32, port 1…16, time 0)
-        afterTouch (num 0…127, val 0…127, chan 1…32, port 1…16, time 0)
-        pitchBend  (val 0…16384=8192, chan 1…32, port 1…16, time 0)
-        programChange (num 0…255, chan 1…32, port 1…16, time 0) //1, 632, 255
+        controller (cc 0…127, val 0…127, chan 1…32, port 1…16, time)
+        afterTouch (num 0…127, val 0…127, chan 1…32, port 1…16, time)
+        pitchBend  (val 0…16384=8192, chan 1…32, port 1…16, time)
+        programChange (num 0…255, chan 1…32, port 1…16, time) //1, 632, 255
         nrpn (num 0…16383, val 0…1, chan, time)
     }
 
