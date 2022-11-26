@@ -22,6 +22,7 @@ sky { // visual music synth
         accel (x -0.3…0.3,
                y -0.3…0.3,
                z -0.3…0.3)  // accelerometer
+
         accel.on (0…1)
 
         radius (1…92=9) // finger silhouette
@@ -37,7 +38,7 @@ sky { // visual music synth
             size (1…64=10)    // range of radius
             press (0…1=1)     // pressure changes size
             index (1…255=127) // index in 256 color palette
-                                  // <<(osc.tuio.z osc.manos˚z) // redirect from OSC
+                              // <<(osc.tuio.z osc.manos˚z) // redirect from OSC
         }
         line { // place holder for line drawing
             prev (x 0…1, y 0…1) // staring point of segment
