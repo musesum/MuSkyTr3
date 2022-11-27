@@ -15,7 +15,7 @@ midi { // musical instrument device interface
 
     skypad {
         plane(num == 129, val 0…1, chan, time)
-        <> menu.model.canvas.color.plane
+        <> shader.model.pipe.color
 
         xfade(num == 130, val 0…1, chan, time)
         <> sky.color.xfade
@@ -25,7 +25,7 @@ midi { // musical instrument device interface
     cc {
         skypad {
             plane(cc == 11, val 0…127, chan, time)
-            <> menu.model.canvas.color.plane
+            <> shader.model.pipe.color
             
             xfade(cc == 10, val 0…127, chan, time)
             <> sky.color.xfade

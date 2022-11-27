@@ -14,7 +14,7 @@ shader{
             record { on(0…1=0) }
             camera { on(0…1=0) flip (0) }
             camix  { on(0…1=0) mix (0) }
-            color  (0…1=0.1) // bitplane
+            color  (val 0…1=0.1) // bitplane
             render {
                 frame (x 0, y 0, w 1080, h 1920)
                 repeat (x, y)
