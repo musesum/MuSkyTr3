@@ -1,4 +1,4 @@
-sky { // visual music program
+sky { // visual music synth
     main { // main controls
         frame(0) // frame counter
         fps(1…60=60) // frames per second

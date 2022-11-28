@@ -1,25 +1,57 @@
-midi { // musical instrument device interface 
+midi { // musical instrument device interface
     input { // midi input
         note { // note on/off from 0 thru 127
-            on (num 0…127, velo 0…127, chan 1…32, port 1…16, time 0)
-            off (num 0…127, velo 0…127, chan 1…32, port 1…16, time 0)
+            on (num 0…127, velo 0…127, chan 1…32, port 1…16, time)>>(notes˚.output.note.on)
+            off (num 0…127, velo 0…127, chan 1…32, port 1…16, time)>>(input.note.onoutput.note.off)
         }
-        controller (num 0…127, val 0…127, chan 1…32, port 1…16, time 0)
-        afterTouch (num 0…127, val 0…127, chan 1…32, port 1…16, time 0)
-        pitchBend (val 0…16384=8192, chan 1…32, port 1…16, time 0)
-        programChange (num 0…255, chan 1…32, port 1…16, time 0) //1, 632, 255
+        controller (cc 0…127, val 0…127, chan 1…32, port 1…16, time)>>cc˚.
+        afterTouch (num 0…127, val 0…127, chan 1…32, port 1…16, time)
+        pitchBend (val 0…16384=8192, chan 1…32, port 1…16, time)
+        programChange (num 0…255, chan 1…32, port 1…16, time) //1, 632, 255
+        nrpn (num 0…16383, val 0…1, chan, time)>>skypad˚.
     }
-    output {
+    ,, output {
         note { // note on/off from 0 thru 127
-            on (num 0…127, velo 0…127, chan 1…32, port 1…16, time 0)
-            off (num 0…127, velo 0…127, chan 1…32, port 1…16, time 0)
+            on (num 0…127, velo 0…127, chan 1…32, port 1…16, time)>>(notes˚.output.note.on)
+            off (num 0…127, velo 0…127, chan 1…32, port 1…16, time)>>(input.note.onoutput.note.off)
         }
-        controller (num 0…127, val 0…127, chan 1…32, port 1…16, time 0)
-        afterTouch (num 0…127, val 0…127, chan 1…32, port 1…16, time 0)
-        pitchBend (val 0…16384=8192, chan 1…32, port 1…16, time 0)
-        programChange (num 0…255, chan 1…32, port 1…16, time 0) //1, 632, 255
+        controller (cc 0…127, val 0…127, chan 1…32, port 1…16, time)>>cc˚.
+        afterTouch (num 0…127, val 0…127, chan 1…32, port 1…16, time)
+        pitchBend (val 0…16384=8192, chan 1…32, port 1…16, time)
+        programChange (num 0…255, chan 1…32, port 1…16, time) //1, 632, 255
+        nrpn (num 0…16383, val 0…1, chan, time)>>skypad˚.
+    }
+    skypad {
+        plane (num == 129, val 0…1, chan, time)<>menu.model.canvas.color.plane
+        xfade (num == 130, val 0…1, chan, time)<>sky.color.xfade
     }
     cc {
+        skypad {
+            plane (cc == 11, val 0…127, chan, time)<>menu.model.canvas.color.plane
+            xfade (cc == 10, val 0…127, chan, time)<>sky.color.xfade
+        }
+        roli {
+            lightpad {
+                x (cc == 114, val 0…127, chan, time)
+                y (cc == 113, val 0…127, chan, time)
+                z (cc == 115, val 0…127, chan, time)
+            }
+            loopblock {
+                mode (cc == 102, val 0…127, chan, time)
+                mute (cc == 103, val 0…127, chan, time)
+                metro (cc == 104, val 0…127, chan, time)
+                skip (cc == 105, val 0…127, chan, time)
+                back (cc == 106, val 0…127, chan, time)
+                play (cc == 107, val 0…127, chan, time)
+                record (cc == 108, val 0…127, chan, time)
+                learn (cc == 109, val 0…127, chan, time)
+                prev (cc == 110, val 0…127, chan, time)
+                next (cc == 111, val 0…127, chan, time)
+            }
+        }
+    }
+    notes.dot (x : num % 12, y : num _/ 12, z : velo)>>sky.draw.dot
+    _cc {
         main {
             modWheel (num == 1, val, chan, time)
             volume (num == 7, val, chan, time)
@@ -114,7 +146,7 @@ midi { // musical instrument device interface
             _omni {
                 omniModeOff (num == 124, val, chan, time)
                 omniModeOn (num == 125, val, chan, time)
-                omniMode (0…1) <<(omniModeOff (0) omniModeOn (1)), }
+                omniMode (0…1)<<(omniModeOff(0)omniModeOn(1)), }
         }
     }
-}
+    }
