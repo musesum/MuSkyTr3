@@ -22,12 +22,12 @@ midi { // musical instrument device interface
         nrpn (num 0…16383, val 0…1, chan, time)>>skypad˚.
     }
     skypad {
-        plane (num == 129, val 0…1, chan, time)<>menu.model.canvas.color.plane
+        plane (num == 129, val 0…1, chan, time)<>shader.model.pipe.color
         xfade (num == 130, val 0…1, chan, time)<>sky.color.xfade
     }
     cc {
         skypad {
-            plane (cc == 11, val 0…127, chan, time)<>menu.model.canvas.color.plane
+            plane (cc == 11, val 0…127, chan, time)<>shader.model.pipe.color
             xfade (cc == 10, val 0…127, chan, time)<>sky.color.xfade
         }
         roli {
