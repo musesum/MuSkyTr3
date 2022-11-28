@@ -45,10 +45,10 @@ menu  {
             canvas {
                 tile  {
                     mirror (x 0…1=0,
-                            y 0…1=0) >> shader.model.pipe.render.mirror
+                            y 0…1=0) <> shader.model.pipe.render.mirror
 
                     repeat (x -1…1=0.5,
-                            y -1…1=0.5) >> shader.model.pipe.render.repeat
+                            y -1…1=0.5) <> shader.model.pipe.render.repeat
 
                     shift (x 0…1=0.5,
                            y 0…1=0.5) <> shader.model.pipe.draw
@@ -62,8 +62,8 @@ menu  {
                     one   (tap 0…1=0) >> sky.draw.screen.fill(1)
                 }
                 speed {
-                    fps (seg 0…60=60) >> sky.main.fps
-                    run (tog 0…1 =1 ) >> sky.main.run
+                    fps (seg 0…60=60) <> sky.main.fps
+                    run (tog 0…1 =1 ) <> sky.main.run
                 }
             }
             brush {
