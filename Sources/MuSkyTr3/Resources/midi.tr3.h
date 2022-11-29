@@ -19,6 +19,7 @@ midi { // musical instrument device interface
 
         xfade(num == 130, val 0…1, chan, time)
         <> sky.color.xfade
+
     }
     input.nrpn >> skypad˚.
 
@@ -29,6 +30,13 @@ midi { // musical instrument device interface
             
             xfade(cc == 10, val 0…127, chan, time)
             <> sky.color.xfade
+
+            camix(cc == 9, val 0…127, chan, time)
+            <> shader.model.pipe.camix.mix
+
+            repeatX(cc == 14, val 0…127, chan, time)
+            <> shader.model.pipe.render.repeat(x:val)
+
         }
         roli {
             lightpad {
