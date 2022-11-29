@@ -18,17 +18,17 @@ shader {
             record.on (0…1=0)
             camera {
                 on (0…1=0)
-                flip (0)
+                flip (tog 0)
             }
             camix {
                 on (0…1=0)
-                mix (0)
+                mix (val 0…1=0.5)
             }
             color (val 0…1=0.1) // bitplane
             render {
                 frame (x 0, y 0, w 1080, h 1920)
-                repeat (x, y)
-                mirror (x, y)
+                repeat (x -1…1=0, y -1…1=0)
+                mirror (x 0…1, y 0…1)
             }
         }
     }
@@ -51,4 +51,4 @@ shader {
             color ("pipe.color.metal")
         }
     }
-}
+    }

@@ -87,7 +87,7 @@ menu {
             canvas {
                 tile {
                     mirror(x 0…1=0, y 0…1=0)<>shader.model.pipe.render.mirror
-                    repeat(x -1…1=0.5, y -1…1=0.5)<>shader.model.pipe.render.repeat
+                    repeat(x -1…1=0, y -1…1=0)<>shader.model.pipe.render.repeat
                     shift(x 0…1=0.5, y 0…1=0.5)<>shader.model.pipe.draw
                     tilt(tog 0…1=0)<>sky.input.tilt
                 }
@@ -103,8 +103,8 @@ menu {
                 }
             }
             brush {
-                size(val 0…1=0.5)>>(sky.draw.brush.size, menu.SW.model.brush.press(0))
-                press(tog 0…1=1)>>sky.draw.brush.press
+                size(val 0…1=0.5)<>(sky.draw.brush.size, menu.SW.model.brush.press(0))
+                press(tog 0…1=1)<>sky.draw.brush.press
                 tilt(tog 0…1=1)<>sky.input.tilt
             }
             cell {
@@ -118,15 +118,15 @@ menu {
             }
             cam {
                 snap(tap 0…1=0)
-                fake(tog 0…1=0)>>shader.model.pipe.camix.on
-                real(tog 0…1=1)>>shader.model.pipe.camera.on
-                face(tog 0…1=1)>>shader.model.pipe.camera.flip
-                mix(val 0…1=0.5)>>shader.model.pipe.camix.mix
+                fake(tog 0…1=0)<>shader.model.pipe.camix.on
+                real(tog 0…1=1)<>shader.model.pipe.camera.on
+                face(tog 0…1=1)<>shader.model.pipe.camera.flip
+                mix(val 0…1=0.5)<>shader.model.pipe.camix.mix
             }
         }
     }
-    SE { // copy southwest corner
-        view(depth 0) {
+    SE { // copy southwest corner to southeast corner
+        view {
             canvas(symbol "photo.artframe") {
                 tile(image "icon.shader.tile.png") {
                     mirror(symbol "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right")
@@ -171,7 +171,7 @@ menu {
             canvas {
                 tile {
                     mirror(x 0…1=0, y 0…1=0)<>shader.model.pipe.render.mirror
-                    repeat(x -1…1=0.5, y -1…1=0.5)<>shader.model.pipe.render.repeat
+                    repeat(x -1…1=0, y -1…1=0)<>shader.model.pipe.render.repeat
                     shift(x 0…1=0.5, y 0…1=0.5)<>shader.model.pipe.draw
                     tilt(tog 0…1=0)<>sky.input.tilt
                 }
@@ -187,8 +187,8 @@ menu {
                 }
             }
             brush {
-                size(val 0…1=0.5)>>(sky.draw.brush.size, menu.SE.model.brush.press(0))
-                press(tog 0…1=1)>>sky.draw.brush.press
+                size(val 0…1=0.5)<>(sky.draw.brush.size, menu.SE.model.brush.press(0))
+                press(tog 0…1=1)<>sky.draw.brush.press
                 tilt(tog 0…1=1)<>sky.input.tilt
             }
             cell {
@@ -202,10 +202,10 @@ menu {
             }
             cam {
                 snap(tap 0…1=0)
-                fake(tog 0…1=0)>>shader.model.pipe.camix.on
-                real(tog 0…1=1)>>shader.model.pipe.camera.on
-                face(tog 0…1=1)>>shader.model.pipe.camera.flip
-                mix(val 0…1=0.5)>>shader.model.pipe.camix.mix
+                fake(tog 0…1=0)<>shader.model.pipe.camix.on
+                real(tog 0…1=1)<>shader.model.pipe.camera.on
+                face(tog 0…1=1)<>shader.model.pipe.camera.flip
+                mix(val 0…1=0.5)<>shader.model.pipe.camix.mix
             }
         }
     }
@@ -246,17 +246,17 @@ shader {
             }
             camera {
                 on(0…1=0)
-                flip(0)
+                flip(tog 0)
             }
             camix {
                 on(0…1=0)
-                mix(0)
+                mix(val 0…1=0.5)
             }
             color(val 0…1=0.1) // bitplane
             render {
                 frame(x 0, y 0, w 1080, h 1920)
-                repeat(x, y)
-                mirror(x, y)
+                repeat(x -1…1=0, y -1…1=0)
+                mirror(x 0…1, y 0…1)
             }
         }
     }
@@ -278,4 +278,4 @@ shader {
             color("pipe.color.metal")
         }
     }
-    }
+}

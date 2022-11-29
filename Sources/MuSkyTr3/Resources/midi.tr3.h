@@ -34,8 +34,11 @@ midi { // musical instrument device interface
             camix(cc == 9, val 0…127, chan, time)
             <> shader.model.pipe.camix.mix
 
-            repeatX(cc == 14, val 0…127, chan, time)
+            repeatX(cc == 13, val 0…127, chan, time)
             <> shader.model.pipe.render.repeat(x:val)
+
+            repeatY(cc == 14, val 0…127, chan, time)
+            <> shader.model.pipe.render.repeat(y:val)
 
         }
         roli {

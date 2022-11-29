@@ -29,6 +29,9 @@ midi { // musical instrument device interface
         skypad {
             plane (cc == 11, val 0…127, chan, time)<>shader.model.pipe.color
             xfade (cc == 10, val 0…127, chan, time)<>sky.color.xfade
+            camix (cc == 9, val 0…127, chan, time)<>shader.model.pipe.camix.mix
+            repeatX (cc == 13, val 0…127, chan, time)<>shader.model.pipe.render.repeat(x : val)
+            repeatY (cc == 14, val 0…127, chan, time)<>shader.model.pipe.render.repeat(y : val)
         }
         roli {
             lightpad {
@@ -149,4 +152,4 @@ midi { // musical instrument device interface
                 omniMode (0…1)<<(omniModeOff(0)omniModeOn(1)), }
         }
     }
-    }
+}
