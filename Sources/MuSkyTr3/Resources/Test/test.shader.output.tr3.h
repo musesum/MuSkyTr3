@@ -18,7 +18,7 @@ shader {
             record.on (0…1=0)
             camera {
                 on (0…1=0)
-                flip (tog 0)
+                flip (0)
             }
             camix {
                 on (0…1=0)
