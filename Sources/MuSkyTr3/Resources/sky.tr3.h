@@ -1,7 +1,8 @@
 sky { // visual music synth
     main { // main controls
         fps (1…60=60) // frames per second
-        run (1)         // currently running
+        run (1) // currently running
+        peer (0…1) // connect devices on LAN
     }
     pipeline { // default metal pipeline at atartup
         draw   ("draw")    // drawing layer
