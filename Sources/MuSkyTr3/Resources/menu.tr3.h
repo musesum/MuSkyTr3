@@ -88,7 +88,7 @@ menu  {
                 face  (tog 0…1=1  ) <> shader.model.pipe.camera.flip
                 mix   (val 0…1=0.5) <> shader.model.pipe.camix.mix
             }
-            peer  (tog 0…1=1 ) <> sky.main.peer
+            peer (tap 0…1=1 ) <> sky.main.peer
         }
     }
     SE @ SW // copy southwest corner to southeast corner
