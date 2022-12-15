@@ -1,4 +1,52 @@
 menu  {
+    model {
+        canvas {
+            tile  {
+                mirror (x 0…1=0,
+                        y 0…1=0) <> shader.model.pipe.render.mirror
+
+                repeat (x -1…1=0,
+                        y -1…1=0) <> shader.model.pipe.render.repeat
+
+                shift (x 0…1=0.5,
+                       y 0…1=0.5) <> shader.model.pipe.draw
+
+                tilt  (tog 0…1=0) <> sky.input.tilt
+            }
+            color {
+                fade  (val 0…1=0) <> sky.color.xfade
+                plane (val 0…1=0) <> shader.model.pipe.color
+                zero  (tap 0…1=0) >> sky.draw.screen.fill(0)
+                one   (tap 0…1=0) >> sky.draw.screen.fill(1)
+            }
+            speed {
+                fps (seg 0…60=60) <> sky.main.fps
+                run (tog 0…1 =1 ) <> sky.main.run
+            }
+        }
+        brush {
+            size  (val 0…1=0.5) <> (sky.draw.brush.size, press(0))
+            press (tog 0…1=1  ) <> sky.draw.brush.press
+            tilt  (tog 0…1=1  ) <> sky.input.tilt
+        }
+        cell {
+            fade  (val 2…3=2.2) >> shader.model.cell.fade
+            ave   (val 0…1=0.5) >> shader.model.cell.ave
+            melt  (val 0…1=0.5) >> shader.model.cell.melt
+            tunl  (seg 0…5=1  ) >> shader.model.cell.tunl
+            zha   (seg 0…6=2  ) >> shader.model.cell.zha
+            slide (seg 0…7=3  ) >> shader.model.cell.slide
+            fred  (seg 0…4=4  ) >> shader.model.cell.fred
+        }
+        cam {
+            snap  (tap 0…1=0  )
+            fake  (tog 0…1=0  ) <> shader.model.pipe.camix.on
+            real  (tog 0…1=1  ) <> shader.model.pipe.camera.on
+            face  (tog 0…1=1  ) <> shader.model.pipe.camera.flip
+            mix   (val 0…1=0.5) <> shader.model.pipe.camix.mix
+        }
+        peer (peer "deepmuse") <> sky.main.peer
+    }
     SW {
         view {
             canvas (symbol "photo.artframe") {
@@ -41,54 +89,6 @@ menu  {
                 mix   (symbol "slider.horizontal.below.rectangle")
             }
             peer (symbol "network")
-        }
-        model {
-            canvas {
-                tile  {
-                    mirror (x 0…1=0,
-                            y 0…1=0) <> shader.model.pipe.render.mirror
-
-                    repeat (x -1…1=0,
-                            y -1…1=0) <> shader.model.pipe.render.repeat
-
-                    shift (x 0…1=0.5,
-                           y 0…1=0.5) <> shader.model.pipe.draw
-
-                    tilt  (tog 0…1=0) <> sky.input.tilt
-                }
-                color {
-                    fade  (val 0…1=0) <> sky.color.xfade
-                    plane (val 0…1=0) <> shader.model.pipe.color
-                    zero  (tap 0…1=0) >> sky.draw.screen.fill(0)
-                    one   (tap 0…1=0) >> sky.draw.screen.fill(1)
-                }
-                speed {
-                    fps (seg 0…60=60) <> sky.main.fps
-                    run (tog 0…1 =1 ) <> sky.main.run
-                }
-            }
-            brush {
-                size  (val 0…1=0.5) <> (sky.draw.brush.size, press(0))
-                press (tog 0…1=1  ) <> sky.draw.brush.press
-                tilt  (tog 0…1=1  ) <> sky.input.tilt
-            }
-            cell {
-                fade  (val 2…3=2.2) >> shader.model.cell.fade
-                ave   (val 0…1=0.5) >> shader.model.cell.ave
-                melt  (val 0…1=0.5) >> shader.model.cell.melt
-                tunl  (seg 0…5=1  ) >> shader.model.cell.tunl
-                zha   (seg 0…6=2  ) >> shader.model.cell.zha
-                slide (seg 0…7=3  ) >> shader.model.cell.slide
-                fred  (seg 0…4=4  ) >> shader.model.cell.fred
-            }
-            cam {
-                snap  (tap 0…1=0  )
-                fake  (tog 0…1=0  ) <> shader.model.pipe.camix.on
-                real  (tog 0…1=1  ) <> shader.model.pipe.camera.on
-                face  (tog 0…1=1  ) <> shader.model.pipe.camera.flip
-                mix   (val 0…1=0.5) <> shader.model.pipe.camix.mix
-            }
-            peer (peer "deepmuse") <> sky.main.peer
         }
     }
     SE @ SW // copy southwest corner to southeast corner
