@@ -30,13 +30,13 @@ menu  {
             tilt  (tog 0…1=1  ) <> sky.input.tilt
         }
         cell {
-            fade  (val 2…3=2.2) >> shader.model.cell.fade
-            ave   (val 0…1=0.5) >> shader.model.cell.ave
-            melt  (val 0…1=0.5) >> shader.model.cell.melt
-            tunl  (seg 0…5=1  ) >> shader.model.cell.tunl
-            zha   (seg 0…6=2  ) >> shader.model.cell.zha
-            slide (seg 0…7=3  ) >> shader.model.cell.slide
-            fred  (seg 0…4=4  ) >> shader.model.cell.fred
+            fade  (val 2…3=2.2) <> shader.model.cell.fade
+            ave   (val 0…1=0.5) <> shader.model.cell.ave
+            melt  (val 0…1=0.5) <> shader.model.cell.melt
+            tunl  (seg 0…5=1  ) <> shader.model.cell.tunl
+            zha   (seg 0…6=2  ) <> shader.model.cell.zha
+            slide (seg 0…7=3  ) <> shader.model.cell.slide
+            fred  (seg 0…4=4  ) <> shader.model.cell.fred
         }
         cam {
             snap  (tap 0…1=0  )
