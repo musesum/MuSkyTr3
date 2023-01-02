@@ -92,6 +92,4 @@ menu  {
         }
     }
     SE @ SW // copy southwest corner to southeast corner
-    NE @ SW // copy southwest corner to southeast corner
-    NW @ SW // copy southwest corner to southeast corner
 }
