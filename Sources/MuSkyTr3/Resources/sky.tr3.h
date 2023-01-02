@@ -2,7 +2,12 @@ sky { // visual music synth
     main { // main controls
         fps (1…60=60) // frames per second
         run (1) // currently running
-        peer (0…1).data << draw˚.
+    }
+    network {
+        bonjour // bonjour status
+        follow (0…1=1) // follow remote events
+        midi (0…1=1)   // follow midi events
+        data << draw˚. // send draw events
     }
     pipeline { // default metal pipeline at atartup
         draw   ("draw")    // drawing layer

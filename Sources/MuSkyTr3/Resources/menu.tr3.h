@@ -21,7 +21,7 @@ menu  {
             }
             speed {
                 fps (seg 0…60=60) <> sky.main.fps
-                run (tog 0…1 =1 ) <> sky.main.run
+                run (tog 0…1=1 ) <> sky.main.run
             }
         }
         brush {
@@ -45,7 +45,11 @@ menu  {
             face  (tog 0…1=1  ) <> shader.model.pipe.camera.flip
             mix   (val 0…1=0.5) <> shader.model.pipe.camix.mix
         }
-        peer (peer "deepmuse") <> sky.main.peer
+        network (symbol "network") {
+            bonjour (peer "bonjour") <> sky.main.peer.bonjour
+            follow  (tog 0…1=1) <> sky.main.peer.follow
+            midi    (tog 0…1=1) <> sky.main.peer.midi
+        }
     }
     SW {
         view {
@@ -88,7 +92,11 @@ menu  {
                 face  (symbol "arrow.triangle.2.circlepath.camera")
                 mix   (symbol "slider.horizontal.below.rectangle")
             }
-            peer (symbol "network")
+            network (symbol "network") {
+                bonjour (symbol "bonjour")
+                follow (symbol "shared.with.you")
+                midi (symbol "pianokeys.inverse")
+            }
         }
     }
     SE @ SW // copy southwest corner to southeast corner
