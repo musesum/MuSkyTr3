@@ -10,7 +10,7 @@ shader{
             zha   (0…6=2  ) { on(0…1=0) >> cell˚on(0) << .. bits(2…4=3) loops(11)  }
         }
         pipe {
-            draw (x 0…1=0.5, y 0…1=0.5) { on(0…1=0) }
+            draw (x 0…1=0.5, y 0…1=0.5) { on(0…1=1) }
             record { on(0…1=0) }
             camera { on(0…1=0) flip (0) }
             camix  { on(0…1=0) mix(val 0…1=0.5) }
