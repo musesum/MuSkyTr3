@@ -2,6 +2,7 @@ sky { // visual music synth
     main { // main controls
         fps (1…60=60) // frames per second
         run (1) // currently running
+        anim(0…1=0) // animation transition speed
     }
     network {
         bonjour // bonjour status
@@ -38,7 +39,7 @@ sky { // visual music synth
     }
     draw { // draw on metal layer
         screen { // fill 32 bit universe
-            fill(0) // all zeros 0x00000000
+            fill(0…1=0) // all zeros 0x00000000
         }
         brush { // type of brush and range
             size (1…64=10)    // range of radius

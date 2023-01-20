@@ -16,17 +16,17 @@ menu  {
             color {
                 fade  (val 0…1=0) <> sky.color.xfade
                 plane (val 0…1=0) <> shader.model.pipe.color
-                zero  (tap 0…1=0) >> sky.draw.screen.fill(0)
-                one   (tap 0…1=0) >> sky.draw.screen.fill(1)
+                fill  (seg 0…1=0) >> sky.draw.screen.fill
             }
             speed {
                 fps (seg 0…60=60) <> sky.main.fps
-                run (tog 0…1=1 ) <> sky.main.run
+                run (seg 0…1=1 ) <> sky.main.run
+                anim(val 0…1=0.24) <> sky.main.anim
             }
         }
         brush {
-            size  (val 0…1=0.5) <> (sky.draw.brush.size, press(0))
-            press (tog 0…1=1  ) <> sky.draw.brush.press
+            size  (val 0…1=0.5) <> sky.draw.brush.size
+            press (tog 0…1=1  ) >> sky.draw.brush.press
             tilt  (tog 0…1=1  ) <> sky.input.tilt
         }
         cell {
@@ -58,23 +58,23 @@ menu  {
                     mirror (symbol "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right")
                     repeat (symbol "rectangle.grid.2x2" )
                     shift (image "icon.cell.scroll")
-                    tilt  (image "icon.pen.tilt")
+                    tilt  (symbol "angle")
                 }
                 color(image "icon.pal.main") {
                     fade  (symbol "slider.horizontal.below.rectangle")
                     plane (symbol "square.3.layers.3d.down.right")
-                    zero  (symbol "drop")
-                    one   (symbol "drop.fill")
+                    fill  (symbol "drop.fill")
                 }
                 speed (image "icon.speed") {
                     fps (symbol "speedometer")
                     run (symbol "goforward")
+                    anim (symbol "bolt.fill")
                 }
             }
             brush (symbol "paintbrush.pointed") {
                 size  (symbol "circle.circle")
-                press (image "icon.pen.press")
-                tilt  (image "icon.pen.tilt")  //(symbol "angle")
+                press (symbol "scribble.variable")
+                tilt  (symbol "angle")  //(symbol "angle")
             }
             cell (symbol "circle.grid.3x3") {
                 fade  (image "icon.cell.fade" )
@@ -90,7 +90,7 @@ menu  {
                 fake  (symbol "face.dashed")
                 real  (symbol "face.smiling")
                 face  (symbol "arrow.triangle.2.circlepath.camera")
-                mix   (symbol "slider.horizontal.below.rectangle")
+                mix   (symbol "camera.filters")
             }
             network (symbol "network") {
                 bonjour (symbol "bonjour")
