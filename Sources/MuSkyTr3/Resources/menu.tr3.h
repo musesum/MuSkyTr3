@@ -14,8 +14,8 @@ menu  {
                 tilt  (tog 0…1=0) <> sky.input.tilt
             }
             color {
-                fade  (val 0…1=0) <> sky.color.xfade
-                plane (val 0…1=0) <> shader.model.pipe.color
+                fade  (val 0…1=0.5) <> sky.color.xfade
+                plane (val 0…1=0.1) <> shader.model.pipe.color
                 fill  (seg 0…1=0) >> sky.draw.screen.fill
             }
             speed {
@@ -27,10 +27,10 @@ menu  {
         brush {
             size  (val 0…1=0.5) <> sky.draw.brush.size
             press (tog 0…1=1  ) <> sky.draw.brush.press
-            tilt  (tog 0…1=1  ) <> sky.input.tilt
+            index (seg 1…255=127) <> sky.draw.brush.index
         }
         cell {
-            fade  (val 2…3=2.2) <> shader.model.cell.fade
+            fade  (val 1.61…3=1.61) <> shader.model.cell.fade
             ave   (val 0…1=0.5) <> shader.model.cell.ave
             melt  (val 0…1=0.5) <> shader.model.cell.melt
             tunl  (seg 0…5=1  ) <> shader.model.cell.tunl
@@ -74,7 +74,7 @@ menu  {
             brush (symbol "paintbrush.pointed") {
                 size  (symbol "circle.circle")
                 press (symbol "scribble.variable")
-                tilt  (symbol "angle")  //(symbol "angle")
+                index (symbol "swatchpalette.fill")
             }
             cell (symbol "circle.grid.3x3") {
                 fade  (image "icon.cell.fade" )

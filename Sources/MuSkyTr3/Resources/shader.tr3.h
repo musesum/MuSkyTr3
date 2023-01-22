@@ -1,7 +1,7 @@
 shader{
     model {
         cell {
-            fade  (0…1=0.5) { on(0…1=0) >> cell˚on(0) << .. }
+            fade  (1.61…3=1.61) { on(0…1=0) >> cell˚on(0) << .. }
             ave   (0…1=0.5) { on(0…1=1) >> cell˚on(0) << .. }
             melt  (0…1=0.5) { on(0…1=0) >> cell˚on(0) << .. }
             tunl  (0…5=1  ) { on(0…1=0) >> cell˚on(0) << .. }
