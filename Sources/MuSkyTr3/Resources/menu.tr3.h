@@ -26,7 +26,7 @@ menu  {
         }
         brush {
             size  (val 0…1=0.5) <> sky.draw.brush.size
-            press (tog 0…1=1  ) >> sky.draw.brush.press
+            press (tog 0…1=1  ) <> sky.draw.brush.press
             tilt  (tog 0…1=1  ) <> sky.input.tilt
         }
         cell {
@@ -45,7 +45,7 @@ menu  {
             face  (tog 0…1=1  ) <> shader.model.pipe.camera.flip
             mix   (val 0…1=0.5) <> shader.model.pipe.camix.mix
         }
-        network (symbol "network") {
+        net (symbol "network") {
             bonjour (peer "bonjour") <> sky.main.peer.bonjour
             follow  (tog 0…1=1) <> sky.main.peer.follow
             midi    (tog 0…1=1) <> sky.main.peer.midi
@@ -92,7 +92,7 @@ menu  {
                 face  (symbol "arrow.triangle.2.circlepath.camera")
                 mix   (symbol "camera.filters")
             }
-            network (symbol "network") {
+            net (symbol "network") {
                 bonjour (symbol "bonjour")
                 follow (symbol "shared.with.you")
                 midi (symbol "pianokeys.inverse")
