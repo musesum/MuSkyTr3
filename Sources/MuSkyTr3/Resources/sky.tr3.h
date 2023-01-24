@@ -2,7 +2,7 @@ sky { // visual music synth
     main { // main controls
         fps (1…60=60) // frames per second
         run (1) // currently running
-        anim(0…1=0) // animation transition speed
+        anim(0…1=1) // animation transition speed
     }
     network {
         bonjour // bonjour status
@@ -19,7 +19,7 @@ sky { // visual music synth
     color { // false color mapping palette
         pal0 ("roygbik")    // palette 0: (r)ed (o)range (y)ellow …
         pal1 ("wKZ")        // palette 1: (w)hite blac(K) fractali(Z)e
-        xfade (val 0…1=0.5)
+        xfade (val 0…1=0.5) <~ main.anim 
     }
     input { // phone and tablet pencil input
 

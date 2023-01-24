@@ -15,29 +15,29 @@ midi { // musical instrument device interface
 
     skypad {
         plane(num == 129, val 0…1, chan, time)
-        <> shader.model.pipe.color
+        <> model.canvas.color.plane
 
-        xfade(num == 130, val 0…1, chan, time)
-        <> sky.color.xfade
+        fade(num == 130, val 0…1, chan, time)
+        <> model.canvas.color.fade
     }
     input.nrpn >> skypad˚.
 
     cc {
         skypad {
             plane(cc == 11, val 0…127, chan, time)
-            <> shader.model.pipe.color
+            <> model.canvas.color.plane
             
-            xfade(cc == 10, val 0…127, chan, time)
-            <> sky.color.xfade
+            fade(cc == 10, val 0…127, chan, time)
+            <> model.canvas.color.fade
 
             camix(cc == 9, val 0…127, chan, time)
-            <> shader.model.pipe.camix.mix
+            <> model.cam.mix
 
             repeatX(cc == 13, val 0…127, chan, time)
-            <> shader.model.pipe.render.repeat(x:val)
+            <> model.canvas.tile.repeat(x:val)
 
             repeatY(cc == 14, val 0…127, chan, time)
-            <> shader.model.pipe.render.repeat(y:val)
+            <> model.canvas.tile.repeat(y:val)
         }
         roli {
             lightpad {
