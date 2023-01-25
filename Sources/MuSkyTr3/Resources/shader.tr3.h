@@ -4,7 +4,7 @@ shader {
 
     model {
         cell {
-            fade  (1.62…3 ) { on(0…1=0) >> cell˚on(0) << .. } <~ anim
+            fade  (1.62…3=1.62) { on(0…1=0) >> cell˚on(0) << .. } <~ anim
             ave   (0…1=0.5) { on(0…1=1) >> cell˚on(0) << .. } <~ anim
             melt  (0…1=0.5) { on(0…1=0) >> cell˚on(0) << .. } <~ anim
             tunl  (0…5=1  ) { on(0…1=0) >> cell˚on(0) << .. }

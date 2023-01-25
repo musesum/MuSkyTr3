@@ -23,12 +23,12 @@ sky { // visual music synth
     }
     input { // phone and tablet pencil input
 
-        azimuth (x -0.2…0.2,
-                 y -0.2…0.2)  >> shader.model.pipe.draw
+        azimuth (x -0.2 … 0.2,
+                 y -0.2 … 0.2)  >> shader.model.pipe.draw
 
-        accel (x -0.3…0.3,
-               y -0.3…0.3,
-               z -0.3…0.3)  // accelerometer
+        accel (x -0.3 … 0.3,
+               y -0.3 … 0.3,
+               z -0.3 … 0.3)  // accelerometer
 
         accel.on (0…1)
 

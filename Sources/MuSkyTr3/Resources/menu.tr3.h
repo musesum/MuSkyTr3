@@ -74,7 +74,7 @@ menu  {
             brush (symbol "paintbrush.pointed") {
                 size  (symbol "circle.circle")
                 press (symbol "scribble.variable")
-                index (symbol "swatchpalette.fill")
+                index (symbol "calendar.day.timeline.left")
             }
             cell (symbol "circle.grid.3x3") {
                 fade  (image "icon.cell.fade" )
